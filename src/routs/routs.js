@@ -1,11 +1,12 @@
 const express = require('express');
 const { Router } = express;
 const routs = Router();
+import datosLogIn from '../../views/main'
 
 
 
 routs.get('/login', async function(req, res){
-    res.render('index');
+    res.render('index', {usuario: usuario});
 });
 
 routs.get('/contador', (req, res) => {
@@ -21,7 +22,7 @@ routs.get('/contador', (req, res) => {
 routs.get('/logIn', (req, res) => {
     res.cookie(`${datosLogIn.usuario}`,
      `${datosLogIn.contrasenia}`, 
-     { maxAge: 30000 }).send(`Bienvenido ${datosLogIn.usuario}`)
+     { maxAge: 30000 }).send(console.log(`Bienvenido ${datosLogIn.usuario}`))
 } );
 
 module.exports = routs;
